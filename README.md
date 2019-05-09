@@ -1,7 +1,7 @@
 # splunk-updater
 Automate downloading the latest Splunk installer
 
-Usage: ./splunk_updater.sh <product> <version> <hash> <arch> <pkg>
+Usage: ./splunk_updater.sh _product_ _version_ _hash_ _arch_ _pkg_
 
 * [1] Product -> Values can be: splunk, splunkforwarder
 * [2] Version -> Example: 7.2.6
