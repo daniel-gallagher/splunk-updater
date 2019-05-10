@@ -56,15 +56,15 @@ function install_update
   echo -e "\e[94m[+] Installing: $filename \e[0m"
 
   if [ "$pkg" = "deb" ]; then
-    sudo dpkg -i $filename >>update.log
+    sudo dpkg -i $filename >>update.log 2>&1
   fi
 
   if [ "$pkg" = "rpm" ]; then
-    sudo rpm -Uvh $filename >>update.log
+    sudo rpm -Uvh $filename >>update.log 2>&1
   fi
 
   echo -e "\e[94m[+] Restarting Splunk services \e[0m"
-  sudo su - splunk -c '/opt/splunk/bin/splunk start --accept-license --answer-yes --no-prompt' >>update.log
+  sudo su - splunk -c '/opt/splunk/bin/splunk start --accept-license --answer-yes --no-prompt' >>update.log 2>&1
 
   echo -e "\e[94m[-] Cleaning up: $filename \e[0m"
   rm -f ./$filename
