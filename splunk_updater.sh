@@ -7,13 +7,19 @@
 
 # Initialze variables
 os="linux" # Set static to "linux" for now
+
+long_version=$(curl -s https://www.splunk.com/en_us/download/splunk-enterprise.html | egrep -o 'splunk-[0-9]+\.[0-9]+\.[0-9]+-[0-9a-f]{8,12}' | head -1)
+version=$(echo $long_version | cut -d - -f 2) # Splunk product version
+hash=$(echo $long_version | cut -d - -f 3) # Hash is specific to version
+
 product=${1:-splunk} # values can be : splunk , splunkforwarder
-version=${2:-7.2.6} # Splunk product version
-hash=${3:-c0bf0f679ce9} # Hash is specific to version
-arch=${4:-amd64} # values should be : x86_64 (redhat), amd64 (ubuntu)
-pkg=${5:-deb} # Values should be : rpm, deb
+arch=${2:-amd64} # values should be : x86_64 (redhat), amd64 (ubuntu)
+pkg=${3:-deb} # Values should be : rpm, deb
+
 filename="${product}-${version}-${hash}-${os}-2.6-${arch}.${pkg}"
 md5File="${filename}.md5"
+
+echo -e "\e[35m[*] Current Version: $long_version \e[0m"
 
 function usage
 {
@@ -30,11 +36,11 @@ function usage
 
 function get_update
 {
-  echo -e "\e[35m[+] Downloading: $md5File \e[0m"
+  echo -e "\e[90m[+] Downloading: $md5File \e[0m"
 
   wget "https://download.splunk.com/products/splunk/releases/${version}/${os}/${md5File}" -q --show-progress
 
-  echo -e "\e[35m[+] Downloading: $filename \e[0m"
+  echo -e "\e[90m[+] Downloading: $filename \e[0m"
 
   wget "https://download.splunk.com/products/splunk/releases/${version}/${os}/${filename}" -q --show-progress
 
