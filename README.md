@@ -1,7 +1,7 @@
 # splunk-updater
 Automate downloading the latest Splunk installer
 
-This script will find the most recent version, download it, and verify the md5sum of the installer. THe optional '-i' switch will install the update over top of the existing installation and then will restart Splunk services after accepting the license agreement.
+This script will find the most recent version, download it, and verify the md5sum of the installer. The optional '-i' switch will install the update over top of the existing installation and then will restart Splunk services (as 'splunk' user) after accepting the license agreement.
 
 
 *currently only working for Ubuntu/Debian environments*
