@@ -1,13 +1,14 @@
 # splunk-updater
 Automate downloading the latest Splunk installer
 
-Usage: ./splunk_updater.sh _product_ _arch_ _pkg_
+This script will find the most recent version, download it, and verify the md5sum of the installer. THe optional '-i' switch will install the update over top of the existing installation and then will restart Splunk services after accepting the license agreement.
+
+
+*currently only working for Ubuntu/Debian environments*
 
 # Optional Arguments:
 
-* [1] Product -> Values can be: splunk, splunkforwarder
-* [2] Arch -> Values can be: x86_64 (redhat), amd64 (ubuntu)
-* [3] Pkg -> Values can be: rpm, deb
+* -i Install and restart splunk services
 
 # Current defaults:
 
