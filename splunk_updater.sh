@@ -16,7 +16,7 @@ arch="amd64" # values can be : x86_64 (redhat), amd64 (ubuntu)
 pkg="deb" # Values can be : rpm (redhat), deb (ubuntu)
 
 # Generate filename
-filename="${product}-${version}-${build}-${os}-2.6-${arch}.${pkg}"
+filename="${product}-${version}-${build}-linux-2.6-${arch}.${pkg}"
 md5File="${filename}.md5"
 
 
